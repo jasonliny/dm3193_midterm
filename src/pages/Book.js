@@ -66,27 +66,9 @@ function Book() {
       <h1>
         <span className="book-title">{book.name}</span>
       </h1>
-      <div
-        className="book-details"
-        style={
-          {
-            // borderWidth: `${20 * relRating}px` /*`rgba(255,255,0,${relRating}`*/,
-            // borderWidth: "10px",
-            // borderColor: `rgba(255,255,0,${relRating})`,
-          }
-        }
-      >
+      <div className="book-details">
         <img src={imageURL} />
-        <div
-          className="quote"
-          style={
-            {
-              // borderWidth: `${20 * relRating}px` /*`rgba(255,255,0,${relRating}`*/,
-              // borderWidth: "10px",
-              // borderColor: `rgba(255,255,0,${relRating})`,
-            }
-          }
-        >
+        <div className="quote">
           <h3
             style={{ textShadow: `0px 0px 10px rgba(255,255,0,${relRating})` }}
           >
