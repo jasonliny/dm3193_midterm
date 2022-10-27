@@ -1,6 +1,7 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './App.css';
-import Home from Home.js
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home";
+import BookListing from "./pages/BookListing";
 
 const router = createBrowserRouter([
   {
@@ -17,8 +18,7 @@ function App() {
   return (
     <div className="App">
       <RouterProvider router={router} />
-      <header className="App-header">
-      </header>
+      <header className="App-header"></header>
     </div>
   );
 }
