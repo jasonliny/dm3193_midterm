@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -5,9 +6,19 @@
 .book-title {
   font-style: italic;
 }
+img {
+  border-radius: 5px;
+}
+body {
+  background-color: #111133;
+  color: silver;
+}
 
 /*Home*/
 .Home h1 {
+  font-family: "Cinzel";
+  font-size: 48px;
+  margin: 0;
   text-align: center;
 }
 .Home .books {
@@ -16,7 +27,8 @@
 /*BookCard*/
 .book-card-wrapper {
   display: inline-block;
-  background-color: red;
+  background-color: #222222;
+  border-radius: 20px;
   height: 600px;
   margin: 25px;
   padding: 20px;
@@ -29,4 +41,27 @@
 }
 .book-card h2 {
   text-align: center;
+}
+
+.book-card a {
+  color: gold;
+  padding: 10px;
+}
+/*Book*/
+.book-page {
+  text-align: center;
+}
+.book-details {
+  border-color: gray;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 5px;
+  display: inline-flex;
+  max-width: 800px;
+  padding: 20px;
+  text-align: center;
+}
+.book-details .quote {
+  padding: 20px;
+  align-self: center;
 }

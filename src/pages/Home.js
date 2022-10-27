@@ -26,7 +26,7 @@ function Home() {
   return (
     <div className="Home">
       <h1>
-        <span className="book-title">Lord of the Rings</span>
+        <span className="book-title">The Lord of the Rings</span> Book Series
       </h1>
       <div className="books">
         {books.map((book) => (

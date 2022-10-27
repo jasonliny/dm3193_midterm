@@ -14,11 +14,11 @@ function BookCard({ author, id, title }) {
             <img src={imageURL}></img>
           </a>
         </div>
-        <a href={`/book/${id}`}>
-          <h2>
+        <h2>
+          <a href={`/book/${id}`}>
             <span className="book-title">{title}</span> by {author}
-          </h2>
-        </a>
+          </a>
+        </h2>
       </div>
     </div>
   );
