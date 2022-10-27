@@ -13,7 +13,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get(`https://the-one-api.dev/v2/book`)
+      .get(`https://the-one-api.dev/v2/book`, headers)
       .then(function (response) {
         setBooks(response.data.docs);
       })
@@ -24,13 +24,15 @@ function Home() {
 
   console.log(books);
   return (
-    <div>
+    <div className="Home">
       <h1>
         <span className="book-title">Lord of the Rings</span>
       </h1>
-      {books.map((book) => (
-        <BookCard author="J.R.R. Tolkien" id={book._id} title={book.name} />
-      ))}
+      <div className="books">
+        {books.map((book) => (
+          <BookCard author="J.R.R. Tolkien" id={book._id} title={book.name} />
+        ))}
+      </div>
       {/* <BookCard
         author="J.R.R. Tolkien"
         image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1654215925l/61215351._SY475_.jpg"

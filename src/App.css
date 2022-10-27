@@ -6,10 +6,27 @@
   font-style: italic;
 }
 
+/*Home*/
+.Home h1 {
+  text-align: center;
+}
+.Home .books {
+  text-align: center;
+}
 /*BookCard*/
+.book-card-wrapper {
+  display: inline-block;
+  background-color: red;
+  height: 600px;
+  margin: 25px;
+  padding: 20px;
+  width: 500px;
+}
 .book-card {
   align-items: center;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  padding: 20px;
+}
+.book-card h2 {
+  text-align: center;
 }
