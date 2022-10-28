@@ -88,7 +88,9 @@ function Book() {
           <span className="book-title">{book.name}</span>
         </h1>
         <div className="book-details">
-          <img src={imageURL} alt={`book cover for ${book.name}`} />
+          <div className="book-cover-img-wrapper">
+            <img src={imageURL} alt={`book cover for ${book.name}`} />
+          </div>
           <div className="quote">
             <h3
               style={{

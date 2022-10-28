@@ -85,6 +85,10 @@ body {
   padding: 20px;
   text-align: center;
 }
+.book-details .book-cover-img-wrapper {
+  display: flex;
+  align-items: center;
+}
 .book-details .quote {
   padding: 20px;
   align-self: center;
