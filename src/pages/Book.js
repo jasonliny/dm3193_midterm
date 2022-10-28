@@ -73,7 +73,7 @@ function Book() {
     return {
       aQuote: selectQuote.quote,
       imageURL: curBook[0].imageURL,
-      relRating: (selectLikes / maxLikes) * 0.5 + 0.5, // scale relative rating (likes) to be from 0.5 to 1
+      relRating: (selectLikes / maxLikes) * 0.75 + 0.25, // scale relative rating (likes) to be from 0.25 to 1
     };
   }, [book]);
 
