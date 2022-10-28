@@ -64,7 +64,8 @@ body {
   text-align: center;
 }
 
-.book-card a {
+.book-card a,
+.book-card a:visited {
   color: gold;
   padding: 10px;
 }
