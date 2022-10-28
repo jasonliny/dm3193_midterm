@@ -1,3 +1,6 @@
+/*
+  Self-written JSON containing a URL to a book cover image (taken from Goodreads) for each book in The Lord of the Rings series
+*/
 export default [
   {
     title: "The Fellowship of the Ring",

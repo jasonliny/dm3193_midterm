@@ -3,6 +3,9 @@ import axios from "axios";
 import BookCard from "../components/BookCard";
 import { LOTR_API_KEY } from "../API_KEYS";
 
+// Homepage with a heading/page title on top
+// Contains book cards generated with data gotten from an API ("The One API")
+
 function Home() {
   const headers = {
     Accept: "application/json",
@@ -11,6 +14,7 @@ function Home() {
 
   const [books, setBooks] = useState([]);
 
+  // Set books data to array of books returned by The One API
   useEffect(() => {
     axios
       .get(`https://the-one-api.dev/v2/book`, headers)
@@ -22,7 +26,7 @@ function Home() {
       });
   }, []);
 
-  console.log(books);
+  // Heading with generated book cards using books data
   return (
     <div className="Home">
       <h1>

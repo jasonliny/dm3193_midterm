@@ -1,3 +1,9 @@
+/* 
+  The Goodreads API (1) does not have a method of retreiving quotes (2) is being/has been deprecated. Therefore, a dataset available online was used instead.
+  Original Data Source (SQLite database containing quotes scraped from Goodreads) Retrieved From: https://www.kaggle.com/datasets/faellielupe/goodreads-quotes
+  Modified by filtering by quotes that had "J.R.R. Tolkien" as the author; "The Fellowship of the Ring", "The Two Towers", or "The Return of the King" as the title"; and over 100 likes. Then, converted to JSON format.
+*/
+
 export default [
   {
     quote:

@@ -6,6 +6,8 @@ function BookCard({ author, id, title }) {
     (book) => book.title.toLowerCase() == title.toLowerCase()
   ).imageURL;
 
+  // Card used on homepage with a book's cover image and its title and author (styled to have everything centerd with the image on top title and author below it)
+  // The image and title and author are also links going to their respective individual book pages
   return (
     <div className="book-card-wrapper">
       <div className="book-card">

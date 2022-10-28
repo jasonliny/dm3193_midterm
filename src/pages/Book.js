@@ -5,38 +5,36 @@ import { LOTR_API_KEY } from "../API_KEYS";
 import lotrBookQuotes from "../components/lotr-book-quotes";
 import lotrBooks from "../components/lotr-books";
 
+// Individual book page
+// Title on top
+// Box with a cover image and a quote (styled to have cover on left and quote on right)
+
 function Book() {
+  // Get id of book from URL
   const { id } = useParams();
   const headers = {
     Accept: "application/json",
     Authorization: `Bearer ${LOTR_API_KEY}`,
   };
 
+  // Use id of book to get data from The One API
   const [book, setBook] = useState([]);
   useEffect(() => {
     axios
       .get(`https://the-one-api.dev/v2/book/${id}`, headers)
       .then(function (response) {
         setBook(response.data.docs[0]);
-        console.log("updateBook");
       })
       .catch(function (error) {
         setBook({});
       });
   }, []);
 
+  // Get a random quote from the book on the current page, and image of the book's cover, and how liked the quote was (relRating)
   const { aQuote, imageURL, relRating } = useMemo(() => {
-    let title = book.name || "";
-    let curQuotes = lotrBookQuotes.filter(
-      (someQuote) => someQuote.title.toLowerCase() == title.toLowerCase()
-    );
-    if (curQuotes.length == 0) {
-      curQuotes = [{}];
-    }
-    let randInd = Math.floor(curQuotes.length * Math.random());
-    let selectQuote =
-      curQuotes[Math.floor(curQuotes.length * Math.random())] || {};
+    let title = book.name || ""; // title is used for identifying the books from the JSON data in lotr-books.js and lotr-book-quotes.js
 
+    // From the JSON data containing cover image URLs, find the correct array (one that has a matching title)
     let curBook = lotrBooks.filter(
       (book) => book.title.toLocaleLowerCase() == title.toLowerCase()
     );
@@ -44,23 +42,40 @@ function Book() {
       curBook = [{}];
     }
 
-    let maxLikes = 1;
+    // Gets only quotes from the book on the page
+    let curQuotes = lotrBookQuotes.filter(
+      (someQuote) => someQuote.title.toLowerCase() == title.toLowerCase()
+    );
+    // Prevents error that would occur if no quotes matched
+    if (curQuotes.length == 0) {
+      curQuotes = [{}];
+    }
+
+    // Selects a random quote from the ones available
+    let randInd = Math.floor(curQuotes.length * Math.random());
+    let selectQuote =
+      curQuotes[Math.floor(curQuotes.length * Math.random())] || {};
+
+    // Gets the number of likes the selected quote has received
     let selectLikes = selectQuote.likes | 0;
+
+    // Finds the max number of likes any quote has received
+    let maxLikes = 1;
     for (let i = 0; i < curQuotes.length; i++) {
       if (curQuotes[i].likes > maxLikes) {
         maxLikes = curQuotes[i].likes;
       }
     }
-    console.log(selectLikes, maxLikes);
-    console.log(selectQuote);
 
     return {
       aQuote: selectQuote.quote,
       imageURL: curBook[0].imageURL,
-      relRating: (selectLikes / maxLikes) * 0.5 + 0.5, // scale relative rating to be from 0.5 to 1
+      relRating: (selectLikes / maxLikes) * 0.5 + 0.5, // scale relative rating (likes) to be from 0.5 to 1
     };
   }, [book]);
 
+  // Book title as heading
+  // Rounded box containing a cover image and a quote from the book
   return (
     <div className="book-page">
       <h1>
@@ -70,14 +85,14 @@ function Book() {
         <img src={imageURL} />
         <div className="quote">
           <h3
-            style={{ textShadow: `0px 0px 10px rgba(255,255,0,${relRating})` }}
+            style={{ textShadow: `0px 0px 10px rgba(255,255,0,${relRating})` }} // Text glows gold with the intensity determined by how many likes it recived on Goodreads
           >
             Quote from <span className="book-title">{book.name}</span>:{" "}
           </h3>
           <p>
             <span
               style={{
-                textShadow: `0px 0px 1px rgba(255,255,0,${relRating})`,
+                textShadow: `0px 0px 1px rgba(255,255,0,${relRating})`, // Text glows gold with the intensity determined by how many likes it recived on Goodreads
               }}
             >
               {aQuote}
