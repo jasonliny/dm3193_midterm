@@ -16,6 +16,7 @@ body {
 
 /*NavIcon*/
 .nav {
+  margin-top: 5px;
   text-align: center;
 }
 .home-nav,
