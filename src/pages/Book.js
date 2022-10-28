@@ -31,6 +31,9 @@ function Book() {
       });
   }, []);
 
+  // Set title of page to match book title
+  document.title = book.name;
+
   // Get a random quote from the book on the current page, and image of the book's cover, and how liked the quote was (relRating)
   const { aQuote, imageURL, relRating } = useMemo(() => {
     let title = book.name || ""; // title is used for identifying the books from the JSON data in lotr-books.js and lotr-book-quotes.js
