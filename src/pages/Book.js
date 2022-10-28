@@ -4,6 +4,7 @@ import axios from "axios";
 import { LOTR_API_KEY } from "../API_KEYS";
 import lotrBookQuotes from "../components/lotr-book-quotes";
 import lotrBooks from "../components/lotr-books";
+import Nav from "../components/Nav";
 
 // Individual book page
 // Title on top
@@ -74,30 +75,36 @@ function Book() {
     };
   }, [book]);
 
-  // Book title as heading
+  // Heading
+  // Book title
   // Rounded box containing a cover image and a quote from the book
   return (
-    <div className="book-page">
-      <h1>
-        <span className="book-title">{book.name}</span>
-      </h1>
-      <div className="book-details">
-        <img src={imageURL} />
-        <div className="quote">
-          <h3
-            style={{ textShadow: `0px 0px 10px rgba(255,255,0,${relRating})` }} // Text glows gold with the intensity determined by how many likes it recived on Goodreads
-          >
-            Quote from <span className="book-title">{book.name}</span>:{" "}
-          </h3>
-          <p>
-            <span
+    <div className="book-page-wrapper">
+      <Nav />
+      <div className="book-page">
+        <h1>
+          <span className="book-title">{book.name}</span>
+        </h1>
+        <div className="book-details">
+          <img src={imageURL} />
+          <div className="quote">
+            <h3
               style={{
-                textShadow: `0px 0px 1px rgba(255,255,0,${relRating})`, // Text glows gold with the intensity determined by how many likes it recived on Goodreads
-              }}
+                textShadow: `0px 0px 10px rgba(255,255,0,${relRating})`,
+              }} // Text glows gold with the intensity determined by how many likes it recived on Goodreads
             >
-              {aQuote}
-            </span>
-          </p>
+              Quote from <span className="book-title">{book.name}</span>:{" "}
+            </h3>
+            <p>
+              <span
+                style={{
+                  textShadow: `0px 0px 1px rgba(255,255,0,${relRating})`, // Text glows gold with the intensity determined by how many likes it recived on Goodreads
+                }}
+              >
+                {aQuote}
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
