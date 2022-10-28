@@ -22,7 +22,7 @@ function Book() {
   const [book, setBook] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://the-one-api.dev/v2/book/${id}`, headers)
+      .get(`https://the-one-api.dev/v2/book/${id}`, { headers })
       .then(function (response) {
         setBook(response.data.docs[0]);
       })
@@ -40,25 +40,24 @@ function Book() {
 
     // From the JSON data containing cover image URLs, find the correct array (one that has a matching title)
     let curBook = lotrBooks.filter(
-      (book) => book.title.toLocaleLowerCase() == title.toLowerCase()
+      (book) => book.title.toLocaleLowerCase() === title.toLowerCase()
     );
-    if (curBook.length == 0) {
+    if (curBook.length === 0) {
       curBook = [{}];
     }
 
     // Gets only quotes from the book on the page
     let curQuotes = lotrBookQuotes.filter(
-      (someQuote) => someQuote.title.toLowerCase() == title.toLowerCase()
+      (someQuote) => someQuote.title.toLowerCase() === title.toLowerCase()
     );
     // Prevents error that would occur if no quotes matched
-    if (curQuotes.length == 0) {
+    if (curQuotes.length === 0) {
       curQuotes = [{}];
     }
 
     // Selects a random quote from the ones available
     let randInd = Math.floor(curQuotes.length * Math.random());
-    let selectQuote =
-      curQuotes[Math.floor(curQuotes.length * Math.random())] || {};
+    let selectQuote = curQuotes[randInd] || {};
 
     // Gets the number of likes the selected quote has received
     let selectLikes = selectQuote.likes | 0;
@@ -89,7 +88,7 @@ function Book() {
           <span className="book-title">{book.name}</span>
         </h1>
         <div className="book-details">
-          <img src={imageURL} />
+          <img src={imageURL} alt={`book cover for ${book.name}`} />
           <div className="quote">
             <h3
               style={{

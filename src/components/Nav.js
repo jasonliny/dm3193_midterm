@@ -5,7 +5,7 @@ function Nav() {
   return (
     <div className="nav">
       <a href="/" className="home-nav">
-        <img className="home-nav-icon" src="../ring.png" />
+        <img className="home-nav-icon" src="../ring.png" alt="ring" />
         <span className="home-nav-text">Home</span>
       </a>
     </div>

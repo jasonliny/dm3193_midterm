@@ -3,7 +3,7 @@ import lotrBookCovers from "./lotr-books";
 
 function BookCard({ author, id, title }) {
   let imageURL = lotrBookCovers.find(
-    (book) => book.title.toLowerCase() == title.toLowerCase()
+    (book) => book.title.toLowerCase() === title.toLowerCase()
   ).imageURL;
 
   // Card used on homepage with a book's cover image and its title and author (styled to have everything centerd with the image on top title and author below it)
@@ -13,7 +13,7 @@ function BookCard({ author, id, title }) {
       <div className="book-card">
         <div className="font-cover">
           <a href={`/book/${id}`}>
-            <img src={imageURL}></img>
+            <img src={imageURL} alt={`book cover for ${title}`}></img>
           </a>
         </div>
         <h2>

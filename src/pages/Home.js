@@ -18,7 +18,7 @@ function Home() {
   // Set books data to array of books returned by The One API
   useEffect(() => {
     axios
-      .get(`https://the-one-api.dev/v2/book`, headers)
+      .get(`https://the-one-api.dev/v2/book`, { headers })
       .then(function (response) {
         setBooks(response.data.docs);
       })
